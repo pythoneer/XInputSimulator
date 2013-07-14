@@ -12,3 +12,14 @@ For a detailed example see main.cpp
   sim.mouseUp(1);                   //release the mousebutton press
 ```
 This program is published under the terms of the LGPL (http://www.gnu.org/licenses/)
+
+
+####Status
+2013-07-14: only the Linux part with following functions
+```cpp
+mouseMoveTo  
+mouseMoveRelative  
+mouseDown  
+mouseUp  
+mouseClick  
+```
