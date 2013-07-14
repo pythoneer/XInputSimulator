@@ -18,13 +18,20 @@
 #ifndef XINPUTSIMULATORIMPLLINUX_H
 #define XINPUTSIMULATORIMPLLINUX_H
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
 #include "xinputsimulatorimpl.h"
 
 class XInputSimulatorImplLinux : public XInputSimulatorImpl
 {
+private:
+    Display *display;
+    Window root;
+
 public:
     XInputSimulatorImplLinux();
-    ~XInputSimulatorImplLinux(){}
+    ~XInputSimulatorImplLinux(){ delete display; }
 
     virtual void mouseMoveTo(int x, int y) override;
     virtual void mouseMoveRelative(int x, int y) override;

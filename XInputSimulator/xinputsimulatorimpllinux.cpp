@@ -1,21 +1,3 @@
-#include "xinputsimulatorimpllinux.h"
-#include "notimplementedexception.h"
-#include <iostream>
-
-XInputSimulatorImplLinux::XInputSimulatorImplLinux()
-{
-}
-
-void XInputSimulatorImplLinux::mouseMoveTo(int x, int y)
-{
-    std::cout << "move the mouse!\n";
-}
-
-void XInputSimulatorImplLinux::mouseMoveRelative(int x, int y)
-{
-    throw NotImplementedException();
-}
-
 //    Copyright 2013 Dustin Bensing
 
 //    This file is part of XInputSimulator.
@@ -32,6 +14,44 @@ void XInputSimulatorImplLinux::mouseMoveRelative(int x, int y)
 
 //    You should have received a copy of the GNU Lesser Public License
 //    along with XInputSimulator.  If not, see <http://www.gnu.org/licenses/>.
+
+#include "xinputsimulatorimpllinux.h"
+#include "notimplementedexception.h"
+#include <iostream>
+
+XInputSimulatorImplLinux::XInputSimulatorImplLinux()
+{
+    if((display = XOpenDisplay(NULL)) == NULL) {
+        std::cout << "can not access display server!" << std::endl;
+            return;
+    }
+
+    root = DefaultRootWindow(display);
+}
+
+void XInputSimulatorImplLinux::mouseMoveTo(int x, int y)
+{
+    std::cout << "move the mouse!\n";
+
+    if(!display){
+        return;
+    }
+
+    XWarpPointer(display, None, root, 0, 0, 0, 0, x, y);
+    XFlush(display);
+}
+
+void XInputSimulatorImplLinux::mouseMoveRelative(int x, int y)
+{
+    //throw NotImplementedException();
+
+    if(!display){
+        return;
+    }
+
+    XWarpPointer(display, None, None, 0, 0, 0, 0, x, y);
+    XFlush(display);
+}
 
 void XInputSimulatorImplLinux::mouseDown(int button)
 {

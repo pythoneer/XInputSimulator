@@ -18,6 +18,9 @@
 #include <iostream>
 #include "xinputsimulator.h"
 
+#include <chrono>
+#include <thread>
+
 using namespace std;
 
 int main()
@@ -25,8 +28,9 @@ int main()
     cout << "Hello World!" << endl;
 
     XInputSimulator &sim = XInputSimulator::getInstance();
-    sim.mouseMoveTo(1,2);
-    sim.mouseClick(1);
+    sim.mouseMoveTo(100,200);
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    sim.mouseMoveRelative(400, -100);
 
     return 0;
 }
