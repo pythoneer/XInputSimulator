@@ -112,15 +112,49 @@ void XInputSimulatorImplLinux::mouseClick(int button)
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     this->mouseUp(button);
 }
-
+//kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
 void XInputSimulatorImplLinux::mouseScrollX(int length)
 {
-    throw NotImplementedException();
+    //throw NotImplementedException();
+
+    int button;
+    if(length < 0){
+        button = 6;
+    }else{
+        button = 7;
+    }
+
+    if(length < 0){
+        length *= -1;
+    }
+
+    for(int cnt = 0; cnt < length; cnt++){
+        this->mouseDown(button);
+        //std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        this->mouseUp(button);
+    }
 }
 
 void XInputSimulatorImplLinux::mouseScrollY(int length)
 {
-    throw NotImplementedException();
+    //throw NotImplementedException();
+
+    int button;
+    if(length < 0){
+        button = 4;
+    }else{
+        button = 5;
+    }
+
+    if(length < 0){
+        length *= -1;
+    }
+
+    for(int cnt = 0; cnt < length; cnt++){
+        this->mouseDown(button);
+        //std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        this->mouseUp(button);
+    }
 }
 
 void XInputSimulatorImplLinux::keyDown(int key)
