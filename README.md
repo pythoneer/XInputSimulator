@@ -1,7 +1,9 @@
 XInputSimulator
 ===============
 
-Cross (X) Plattform (Linux/Mac/Win) Simulator for input devices to simulate mouse moves/clicks/scrolls or keyboard keystrokes.
+Cross (X) Plattform (Linux/Mac/Win) Simulator for input devices to simulate mouse moves/clicks/scrolls or keyboard keystrokes.  
+  
+This program is published under the terms of the LGPL (http://www.gnu.org/licenses/)
 ####How to use
 For a detailed example see main.cpp
 ```cpp
@@ -11,7 +13,7 @@ For a detailed example see main.cpp
   sim.mouseMoveRelative(0, 300);    //drag/mark with pressed mousebutton 300px down
   sim.mouseUp(1);                   //release the mousebutton press
 ```
-This program is published under the terms of the LGPL (http://www.gnu.org/licenses/)
+
 
 
 ####Status
