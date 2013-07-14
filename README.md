@@ -26,4 +26,6 @@ mouseMoveRelative
 mouseDown  
 mouseUp  
 mouseClick  
+mouseScrollY  //up and down
+mouseScrollX  //left an right
 ```
