@@ -28,6 +28,9 @@ class XInputSimulatorImplLinux : public XInputSimulatorImpl
 private:
     Display *display;
     Window root;
+    XEvent event;
+
+    void initMouseEvent(int button);
 
 public:
     XInputSimulatorImplLinux();

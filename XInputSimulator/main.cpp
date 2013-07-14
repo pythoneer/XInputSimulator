@@ -23,15 +23,27 @@
 
 using namespace std;
 
+void waitABit();
+
 int main()
 {
     cout << "Hello World!" << endl;
 
     XInputSimulator &sim = XInputSimulator::getInstance();
-    sim.mouseMoveTo(100,200);
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    sim.mouseMoveTo(500,400);
+    waitABit();
     sim.mouseMoveRelative(400, -100);
+    waitABit();
+    sim.mouseDown(1);
+    waitABit();
+    sim.mouseMoveRelative(0, 300);
+    waitABit();
+    sim.mouseUp(1);
 
     return 0;
 }
 
+void waitABit()
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+}
