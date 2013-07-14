@@ -11,3 +11,8 @@
 *.lai
 *.la
 *.a
+
+#ide specific files
+*.pro
+*.user
+*.directory
