@@ -15,6 +15,8 @@
 //    You should have received a copy of the GNU Lesser Public License
 //    along with XInputSimulator.  If not, see <http://www.gnu.org/licenses/>.
 
+#ifdef __linux__
+
 #include "xinputsimulatorimpllinux.h"
 #include "notimplementedexception.h"
 #include <iostream>
@@ -24,8 +26,8 @@
 #include <cstring>
 
 //sleep
-#include <chrono>
-#include <thread>
+//#include <chrono>
+//#include <thread>
 
 XInputSimulatorImplLinux::XInputSimulatorImplLinux()
 {
@@ -109,7 +111,7 @@ void XInputSimulatorImplLinux::mouseClick(int button)
 {
     //throw NotImplementedException();
     this->mouseDown(button);
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     this->mouseUp(button);
 }
 //kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
@@ -166,3 +168,6 @@ void XInputSimulatorImplLinux::keyUp(int key)
 {
     throw NotImplementedException();
 }
+
+
+#endif // linux

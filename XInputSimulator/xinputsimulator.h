@@ -19,7 +19,7 @@
 #define XINPUTSIMULATOR_H
 
 #include <memory>
-#include <mutex>
+//#include <mutex>
 #include <iostream>
 #include "xinputsimulatorimpl.h"
 #include "notimplementedexception.h"
@@ -27,7 +27,7 @@
 #ifdef __linux__
 #include "xinputsimulatorimpllinux.h"
 #elif __APPLE__
-// apple implementation
+#include "xinputsimulatorimplmacos.h"
 #elif _WIN32
 // win implementation
 #endif
@@ -61,8 +61,7 @@ public:
         //instance.implementation = std::move(std::unique_ptr<XInputSimulatorImpl>(new XInputSimulatorImplLinux));
         instance.implementation = new XInputSimulatorImplLinux;
 #elif __APPLE__
-        // apple implementation
-            throw NotImplementedException();
+        instance.implementation = new XInputSimulatorImplMacOs;
 #elif _WIN32
         // win implementation
             throw NotImplementedException();

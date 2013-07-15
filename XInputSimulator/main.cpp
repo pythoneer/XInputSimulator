@@ -18,8 +18,10 @@
 #include <iostream>
 #include "xinputsimulator.h"
 
-#include <chrono>
-#include <thread>
+//#include <chrono>
+//#include <thread>
+
+#include <unistd.h>
 
 using namespace std;
 
@@ -30,6 +32,8 @@ int main()
     cout << "Hello World!" << endl;
 
     XInputSimulator &sim = XInputSimulator::getInstance();
+    waitABit();
+    waitABit();
     sim.mouseMoveTo(500,400);
     waitABit();
     sim.mouseMoveRelative(400, -100);
@@ -50,10 +54,13 @@ int main()
     waitABit();
     sim.mouseScrollX(-10);
 
+
+    waitABit();
     return 0;
 }
 
 void waitABit()
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    sleep(2);
 }
