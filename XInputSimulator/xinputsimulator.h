@@ -60,10 +60,6 @@ public:
         return instance;
     }
 
-    static const int LEFT_MOUSE_BUTTON = 1;
-    static const int RIGHT_MOUSE_BUTTON = 2;
-    static const int MIDDLE_MOUSE_BUTTON = 3;
-
     void mouseMoveTo(int x, int y);
     void mouseMoveRelative(int x, int y);
     void mouseDown(int button);
@@ -74,6 +70,15 @@ public:
 
     void keyDown(int key);
     void keyUp(int key);
+    void keyClick(int key);
+
+    void charToKeyCode(char key_char);
+    void keySequence(const std::string &sequence);
+
+    // mouse
+    static const int LEFT_MOUSE_BUTTON = 1;
+    static const int RIGHT_MOUSE_BUTTON = 2;
+    static const int MIDDLE_MOUSE_BUTTON = 3;
 };
 
 

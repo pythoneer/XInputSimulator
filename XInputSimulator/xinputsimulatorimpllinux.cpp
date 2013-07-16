@@ -149,5 +149,19 @@ void XInputSimulatorImplLinux::keyUp(int key)
     throw NotImplementedException();
 }
 
+void XInputSimulatorImplLinux::keyClick(int key)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimulatorImplLinux::charToKeyCode(char key_char)
+{
+    throw NotImplementedException();
+}
+void XInputSimulatorImplLinux::keySequence(const std::string &sequence)
+{
+    throw NotImplementedException();
+}
+
 
 #endif // linux

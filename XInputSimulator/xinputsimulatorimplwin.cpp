@@ -144,4 +144,18 @@ void XInputSimulatorImplWin::keyUp(int key)
     throw NotImplementedException();
 }
 
+void XInputSimulatorImplWin::keyClick(int key)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimulatorImplWin::charToKeyCode(char key_char)
+{
+    throw NotImplementedException();
+}
+void XInputSimulatorImplWin::keySequence(const std::string &sequence)
+{
+    throw NotImplementedException();
+}
+
 #endif //win

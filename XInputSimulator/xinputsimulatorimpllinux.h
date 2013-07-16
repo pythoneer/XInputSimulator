@@ -48,6 +48,10 @@ public:
 
     virtual void keyDown(int key) override;
     virtual void keyUp(int key) override;
+    virtual void keyClick(int key) override;
+
+    virtual void charToKeyCode(char key_char) override;
+    virtual void keySequence(const std::string &sequence) override;
 
 };
 

@@ -18,6 +18,8 @@
 #ifndef XINPUTSIMULATORIMPL_H
 #define XINPUTSIMULATORIMPL_H
 
+#include <iostream>
+
 class XInputSimulatorImpl
 {
 public:
@@ -32,8 +34,13 @@ public:
     virtual void mouseScrollX(int length) = 0;
     virtual void mouseScrollY(int length) = 0;
 
+
     virtual void keyDown(int key) = 0;
     virtual void keyUp(int key) = 0;
+    virtual void keyClick(int key) = 0;
+
+    virtual void charToKeyCode(char key_char) = 0;
+    virtual void keySequence(const std::string &sequence) = 0;
 
 };
 

@@ -187,4 +187,18 @@ void XInputSimulatorImplMacOs::keyUp(int key)
     throw NotImplementedException();
 }
 
+void XInputSimulatorImplMacOs::keyClick(int key)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimulatorImplMacOs::charToKeyCode(char key_char)
+{
+    throw NotImplementedException();
+}
+void XInputSimulatorImplMacOs::keySequence(const std::string &sequence)
+{
+    throw NotImplementedException();
+}
+
 #endif //apple
