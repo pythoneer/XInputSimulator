@@ -1,3 +1,21 @@
+//    Copyright 2013 Dustin Bensing
+
+//    This file is part of XInputSimulator.
+
+//    XInputSimulator is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU Lesser Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    any later version.
+
+//    XInputSimulator is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU Lesser Public License for more details.
+
+//    You should have received a copy of the GNU Lesser Public License
+//    along with XInputSimulator.  If not, see <http://www.gnu.org/licenses/>.
+
+
 #ifdef __APPLE__
 
 #include <iostream>
@@ -15,6 +33,7 @@
 
 XInputSimulatorImplMacOs::XInputSimulatorImplMacOs()
 {
+    //TODO
     //this->initCurrentMousePosition();
 
     this->currentX = 500;
@@ -33,7 +52,6 @@ void XInputSimulatorImplMacOs::initCurrentMousePosition()
 
 void XInputSimulatorImplMacOs::mouseMoveTo(int x, int y)
 {
-    std::cout << "moveTo mac\n";
 
     CGEventRef mouseEv = CGEventCreateMouseEvent(
                 NULL, kCGEventMouseMoved,
@@ -52,8 +70,6 @@ void XInputSimulatorImplMacOs::mouseMoveTo(int x, int y)
 
 void XInputSimulatorImplMacOs::mouseMoveRelative(int x, int y)
 {
-    std::cout << "moveRelative mac\n";
-
     int newX = this->currentX + x;
     int newY = this->currentY + y;
 
@@ -77,8 +93,6 @@ void XInputSimulatorImplMacOs::mouseDown(int button)
 {
     //throw NotImplementedException();
 
-    std::cout << "mouseDown mac\n";
-
     CGEventRef mouseEv = CGEventCreateMouseEvent(
                 NULL, kCGEventLeftMouseDown,
                 CGPointMake(this->currentX, this->currentY),
@@ -94,8 +108,6 @@ void XInputSimulatorImplMacOs::mouseDown(int button)
 void XInputSimulatorImplMacOs::mouseUp(int button)
 {
     //throw NotImplementedException();
-
-    std::cout << "mouseDown mac\n";
 
     CGEventRef mouseEv = CGEventCreateMouseEvent(
                 NULL, kCGEventLeftMouseUp,
@@ -117,8 +129,6 @@ void XInputSimulatorImplMacOs::mouseClick(int button)
 void XInputSimulatorImplMacOs::mouseScrollX(int length)
 {
     //throw NotImplementedException();
-
-    std::cout << "scroll x mac " << length << std::endl;
 
     int scrollDirection = -1; // 1 left -1 right
 
@@ -149,8 +159,6 @@ void XInputSimulatorImplMacOs::mouseScrollX(int length)
 void XInputSimulatorImplMacOs::mouseScrollY(int length)
 {
     //throw NotImplementedException();
-
-    std::cout << "scroll y mac " << length << std::endl;
 
     int scrollDirection = -1; // 1 down -1 up
 
