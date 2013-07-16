@@ -19,7 +19,7 @@ For a detailed example see main.cpp
 
 
 ####Status
-2013-07-14: only the Linux part with following functions
+2013-07-16: only the Linux and OSX part with following functions
 ```cpp
 mouseMoveTo  
 mouseMoveRelative  
