@@ -19,9 +19,61 @@
 #ifdef _WIN32
 
 #include "xinputsimularotimplwin.h"
+#include "notimplementedexception.h"
+#include <iostream>
 
 XInputSimularotImplWin::XInputSimularotImplWin()
 {
+}
+
+
+void XInputSimularotImplWin::mouseMoveTo(int x, int y)
+{
+    std::cout << "move the mouse!\n";
+}
+
+void XInputSimularotImplWin::mouseMoveRelative(int x, int y)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimularotImplWin::mouseDown(int button)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimularotImplWin::mouseUp(int button)
+{
+    throw NotImplementedException();
+
+}
+
+void XInputSimularotImplWin::mouseClick(int button)
+{
+    throw NotImplementedException();
+    this->mouseDown(button);
+    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    this->mouseUp(button);
+}
+//kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
+void XInputSimularotImplWin::mouseScrollX(int length)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimularotImplWin::mouseScrollY(int length)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimularotImplWin::keyDown(int key)
+{
+    throw NotImplementedException();
+}
+
+void XInputSimularotImplWin::keyUp(int key)
+{
+    throw NotImplementedException();
 }
 
 #endif //win

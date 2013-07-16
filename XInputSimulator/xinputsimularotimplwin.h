@@ -20,10 +20,26 @@
 #ifndef XINPUTSIMULAROTIMPLWIN_H
 #define XINPUTSIMULAROTIMPLWIN_H
 
-class XInputSimularotImplWin
+#include "xinputsimulatorimpl.h"
+
+class XInputSimularotImplWin: public XInputSimulatorImpl
 {
+private:
+
 public:
     XInputSimularotImplWin();
+    ~XInputSimularotImplWin(){}
+
+    virtual void mouseMoveTo(int x, int y) override;
+    virtual void mouseMoveRelative(int x, int y) override;
+    virtual void mouseDown(int button) override;
+    virtual void mouseUp(int button) override;
+    virtual void mouseClick(int button) override;
+    virtual void mouseScrollX(int length) override;
+    virtual void mouseScrollY(int length) override;
+
+    virtual void keyDown(int key) override;
+    virtual void keyUp(int key) override;
 };
 
 #endif // XINPUTSIMULAROTIMPLWIN_H

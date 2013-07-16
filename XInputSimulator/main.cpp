@@ -34,7 +34,7 @@ int main()
     XInputSimulator &sim = XInputSimulator::getInstance();
     waitABit();
     waitABit();
-//    sim.mouseMoveTo(500,400);
+    sim.mouseMoveTo(500,400);
 //    waitABit();
 //    sim.mouseMoveRelative(400, -100);
 //    waitABit();
