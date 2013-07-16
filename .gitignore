@@ -13,7 +13,7 @@
 *.a
 
 #ide specific files
-*.pro
+#*.pro 
 *.user
 *.directory
 build-*
