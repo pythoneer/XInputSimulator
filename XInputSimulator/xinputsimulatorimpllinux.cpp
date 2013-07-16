@@ -25,10 +25,6 @@
 #include <stdio.h>
 #include <cstring>
 
-//sleep
-//#include <chrono>
-//#include <thread>
-
 XInputSimulatorImplLinux::XInputSimulatorImplLinux()
 {
     if((display = XOpenDisplay(NULL)) == NULL) {
@@ -57,8 +53,6 @@ void XInputSimulatorImplLinux::initMouseEvent(int button)
 
 void XInputSimulatorImplLinux::mouseMoveTo(int x, int y)
 {
-    std::cout << "move the mouse!\n";
-
     if(!display){
         return;
     }
@@ -73,8 +67,6 @@ void XInputSimulatorImplLinux::mouseMoveTo(int x, int y)
 
 void XInputSimulatorImplLinux::mouseMoveRelative(int x, int y)
 {
-    //throw NotImplementedException();
-
     if(!display){
         return;
     }
@@ -85,8 +77,6 @@ void XInputSimulatorImplLinux::mouseMoveRelative(int x, int y)
 
 void XInputSimulatorImplLinux::mouseDown(int button)
 {
-    //throw NotImplementedException();
-
     this->initMouseEvent(button);
 
     event.type = ButtonPress;
@@ -97,8 +87,6 @@ void XInputSimulatorImplLinux::mouseDown(int button)
 
 void XInputSimulatorImplLinux::mouseUp(int button)
 {
-    //throw NotImplementedException();
-
     this->initMouseEvent(button);
 
     event.type = ButtonRelease;
@@ -109,21 +97,17 @@ void XInputSimulatorImplLinux::mouseUp(int button)
 
 void XInputSimulatorImplLinux::mouseClick(int button)
 {
-    //throw NotImplementedException();
     this->mouseDown(button);
-    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     this->mouseUp(button);
 }
 //kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
 void XInputSimulatorImplLinux::mouseScrollX(int length)
 {
-    //throw NotImplementedException();
-
     int button;
     if(length < 0){
-        button = 6;
+        button = 6;  //scroll left button
     }else{
-        button = 7;
+        button = 7;  //scroll right button
     }
 
     if(length < 0){
@@ -132,20 +116,17 @@ void XInputSimulatorImplLinux::mouseScrollX(int length)
 
     for(int cnt = 0; cnt < length; cnt++){
         this->mouseDown(button);
-        //std::this_thread::sleep_for(std::chrono::milliseconds(200));
         this->mouseUp(button);
     }
 }
 
 void XInputSimulatorImplLinux::mouseScrollY(int length)
 {
-    //throw NotImplementedException();
-
     int button;
     if(length < 0){
-        button = 4;
+        button = 4;  //scroll up button
     }else{
-        button = 5;
+        button = 5;  //scroll down button
     }
 
     if(length < 0){
@@ -154,7 +135,6 @@ void XInputSimulatorImplLinux::mouseScrollY(int length)
 
     for(int cnt = 0; cnt < length; cnt++){
         this->mouseDown(button);
-        //std::this_thread::sleep_for(std::chrono::milliseconds(200));
         this->mouseUp(button);
     }
 }

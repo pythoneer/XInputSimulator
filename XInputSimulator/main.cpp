@@ -18,9 +18,6 @@
 #include <iostream>
 #include "xinputsimulator.h"
 
-//#include <chrono>
-//#include <thread>
-
 #include <unistd.h>
 
 using namespace std;
@@ -37,11 +34,11 @@ int main()
     waitABit();
     sim.mouseMoveRelative(400, -100);
     waitABit();
-    sim.mouseDown(1);
+    sim.mouseDown(XInputSimulator::LEFT_MOUSE_BUTTON);
     waitABit();
     sim.mouseMoveRelative(0, 300);
     waitABit();
-    sim.mouseUp(1);
+    sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);
     waitABit();
     //scroll down and up
     sim.mouseScrollY(10);

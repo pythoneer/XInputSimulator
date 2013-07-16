@@ -19,7 +19,6 @@
 #define XINPUTSIMULATOR_H
 
 #include <memory>
-//#include <mutex>
 #include <iostream>
 #include "xinputsimulatorimpl.h"
 #include "notimplementedexception.h"
@@ -35,8 +34,6 @@
 class XInputSimulator
 {
 private:
-//XInputSimulator    XInputSimulator instance;
-    //std::unique_ptr<XInputSimulatorImpl> implementation;
     XInputSimulatorImpl *implementation;
 
     XInputSimulator(){}
@@ -46,19 +43,14 @@ public:
     void operator=(XInputSimulator&) = delete;
 
     ~XInputSimulator() {
-        std::cout <<  "Singleton::~Singleton" << std::endl;
         delete implementation;
     }
-    //TODO add impl choose
+
     static XInputSimulator & getInstance()
     {
         static XInputSimulator instance;
 
-        std::cout << "ThreadSafeSingleton::create_singleton_() "<< std::endl;
-
 #ifdef __linux__
-        // get linux impl
-        //instance.implementation = std::move(std::unique_ptr<XInputSimulatorImpl>(new XInputSimulatorImplLinux));
         instance.implementation = new XInputSimulatorImplLinux;
 #elif __APPLE__
         instance.implementation = new XInputSimulatorImplMacOs;
@@ -68,7 +60,11 @@ public:
         return instance;
     }
 
-    void mouseMoveTo(int x, int y);//{ implementation->mouseMoveTo(x, y); }
+    static const int LEFT_MOUSE_BUTTON = 1;
+    static const int RIGHT_MOUSE_BUTTON = 2;
+    static const int MIDDLE_MOUSE_BUTTON = 3;
+
+    void mouseMoveTo(int x, int y);
     void mouseMoveRelative(int x, int y);
     void mouseDown(int button);
     void mouseUp(int button);
