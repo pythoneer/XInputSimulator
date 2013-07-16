@@ -35,4 +35,4 @@ mouseScrollY  //up and down
 mouseScrollX  //left an right
 ```
 
-be aware that some glitches might appear due to the early state of development. There is not much testing going on apart from the main.cpp. Feel free to file bugreports, wishes or patches :)
+be aware that some glitches might appear and the interface might be changing every minute due to the early state of development. There is not much testing going on apart from the main.cpp. Feel free to file bugreports, wishes or patches :)
