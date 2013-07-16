@@ -29,7 +29,7 @@
 #elif __APPLE__
 #include "xinputsimulatorimplmacos.h"
 #elif _WIN32
-#include "xinputsimularotimplwin.h"
+#include "xinputsimulatorimplwin.h"
 #endif
 
 class XInputSimulator
@@ -63,7 +63,7 @@ public:
 #elif __APPLE__
         instance.implementation = new XInputSimulatorImplMacOs;
 #elif _WIN32
-        instance.implementation = new XInputSimularotImplWin;
+        instance.implementation = new XInputSimulatorImplWin;
 #endif
         return instance;
     }
