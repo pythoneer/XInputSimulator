@@ -17,12 +17,12 @@
 
 #ifdef _WIN32
 
-#ifndef XINPUTSIMULAROTIMPLWIN_H
-#define XINPUTSIMULAROTIMPLWIN_H
+#ifndef XINPUTSIMULATORIMPLWIN_H
+#define XINPUTSIMULATORIMPLWIN_H
 
 #include "xinputsimulatorimpl.h"
 
-class XInputSimularotImplWin: public XInputSimulatorImpl
+class XInputSimulatorImplWin: public XInputSimulatorImpl
 {
 private:
     int currentX;
@@ -31,8 +31,8 @@ private:
     void initCurrentMousePosition();
 
 public:
-    XInputSimularotImplWin();
-    ~XInputSimularotImplWin(){}
+    XInputSimulatorImplWin();
+    ~XInputSimulatorImplWin(){}
 
     virtual void mouseMoveTo(int x, int y) override;
     virtual void mouseMoveRelative(int x, int y) override;
@@ -46,6 +46,7 @@ public:
     virtual void keyUp(int key) override;
 };
 
-#endif // XINPUTSIMULAROTIMPLWIN_H
+
+#endif // XINPUTSIMULATORIMPLWIN_H
 
 #endif //win

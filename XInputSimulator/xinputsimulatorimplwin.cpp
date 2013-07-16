@@ -18,7 +18,7 @@
 
 #ifdef _WIN32
 
-#include "xinputsimularotimplwin.h"
+#include "xinputsimulatorimplwin.h"
 #include "notimplementedexception.h"
 #include <iostream>
 
@@ -26,12 +26,12 @@
 
 #define MOUSEEVENTF_HWHEEL 0x01000
 
-XInputSimularotImplWin::XInputSimularotImplWin()
+XInputSimulatorImplWin::XInputSimulatorImplWin()
 {
     this->initCurrentMousePosition();
 }
 
-void XInputSimularotImplWin::initCurrentMousePosition()
+void XInputSimulatorImplWin::initCurrentMousePosition()
 {
     POINT p;
     if (GetCursorPos(&p))
@@ -41,8 +41,7 @@ void XInputSimularotImplWin::initCurrentMousePosition()
     }
 }
 
-
-void XInputSimularotImplWin::mouseMoveTo(int x, int y)
+void XInputSimulatorImplWin::mouseMoveTo(int x, int y)
 {
     SetCursorPos(x, y);
 
@@ -50,7 +49,7 @@ void XInputSimularotImplWin::mouseMoveTo(int x, int y)
     this->currentY = y;
 }
 
-void XInputSimularotImplWin::mouseMoveRelative(int x, int y)
+void XInputSimulatorImplWin::mouseMoveRelative(int x, int y)
 {
     int newX = this->currentX + x;
     int newY = this->currentY + y;
@@ -62,7 +61,7 @@ void XInputSimularotImplWin::mouseMoveRelative(int x, int y)
 }
 
 //TODO use the button from parameter list
-void XInputSimularotImplWin::mouseDown(int button)
+void XInputSimulatorImplWin::mouseDown(int button)
 {
     INPUT in={0};
     in.type = INPUT_MOUSE;
@@ -72,7 +71,7 @@ void XInputSimularotImplWin::mouseDown(int button)
 }
 
 //TODO use the button from parameter list
-void XInputSimularotImplWin::mouseUp(int button)
+void XInputSimulatorImplWin::mouseUp(int button)
 {
     INPUT in={0};
     in.type = INPUT_MOUSE;
@@ -82,14 +81,14 @@ void XInputSimularotImplWin::mouseUp(int button)
 }
 
 //TODO use the button from parameter list
-void XInputSimularotImplWin::mouseClick(int button)
+void XInputSimulatorImplWin::mouseClick(int button)
 {
     this->mouseDown(button);
     //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     this->mouseUp(button);
 }
 //kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
-void XInputSimularotImplWin::mouseScrollX(int length)
+void XInputSimulatorImplWin::mouseScrollX(int length)
 {
     int scrollDirection = 1 * 50; // 1 left -1 right
 
@@ -112,7 +111,7 @@ void XInputSimularotImplWin::mouseScrollX(int length)
     }
 }
 
-void XInputSimularotImplWin::mouseScrollY(int length)
+void XInputSimulatorImplWin::mouseScrollY(int length)
 {
     int scrollDirection = -1 * 50; // 1 up -1 down
 
@@ -135,12 +134,12 @@ void XInputSimularotImplWin::mouseScrollY(int length)
     }
 }
 
-void XInputSimularotImplWin::keyDown(int key)
+void XInputSimulatorImplWin::keyDown(int key)
 {
     throw NotImplementedException();
 }
 
-void XInputSimularotImplWin::keyUp(int key)
+void XInputSimulatorImplWin::keyUp(int key)
 {
     throw NotImplementedException();
 }
