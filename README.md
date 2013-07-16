@@ -9,11 +9,11 @@ For a detailed example see main.cpp
 ```cpp
   XInputSimulator &sim = XInputSimulator::getInstance();
 
-  sim.mouseMoveTo(500,400);         //set mouse to screen cords 500x400
-  sim.mouseMoveRelative(400, -100); //move frome there 400px in x to the right and -100px in y upwards
-  sim.mouseDown(1);                 //press left mouse and hold
-  sim.mouseMoveRelative(0, 300);    //drag/mark with pressed mousebutton 300px down
-  sim.mouseUp(1);                   //release the mousebutton press
+  sim.mouseMoveTo(500,400);                           //set mouse to screen cords 500x400
+  sim.mouseMoveRelative(400, -100);                   //move frome there 400px in x to the right and -100px in y upwards
+  sim.mouseDown(XInputSimulator::LEFT_MOUSE_BUTTON);  //press left mouse and hold
+  sim.mouseMoveRelative(0, 300);                      //drag/mark with pressed mousebutton 300px down
+  sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);    //release the mousebutton press
 ```
   
 building for Linux use -lX11 | include X11/Xlib.h X11/Xutil.h  
