@@ -15,11 +15,13 @@ For a detailed example see main.cpp
   sim.mouseMoveRelative(0, 300);    //drag/mark with pressed mousebutton 300px down
   sim.mouseUp(1);                   //release the mousebutton press
 ```
-
+  
+building for Linux use -lX11  
+building for Mac use -framework ApplicationServices
 
 
 ####Status
-2013-07-16: only the Linux and OSX part with following functions
+2013-07-16: only the Linux and Mac part with following functions
 ```cpp
 mouseMoveTo  
 mouseMoveRelative  
