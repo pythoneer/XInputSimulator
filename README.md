@@ -58,7 +58,7 @@ win32 {
 }
 ```
 
-####Status
+####Status early Alpha
 2013-07-16: Linux, Mac and Win part with following functions
 ```cpp
 mouseMoveTo  
@@ -69,3 +69,5 @@ mouseClick
 mouseScrollY  //up and down
 mouseScrollX  //left an right
 ```
+
+be aware that some glitches might appear due to the early state of development.
