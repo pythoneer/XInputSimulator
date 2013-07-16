@@ -16,12 +16,12 @@ For a detailed example see main.cpp
   sim.mouseUp(1);                   //release the mousebutton press
 ```
   
-building for Linux use -lX11  
-building for Mac use -framework ApplicationServices
-
+building for Linux use -lX11 | include X11/Xlib.h X11/Xutil.h  
+building for Mac use -framework ApplicationServices | include ApplicationServices/ApplicationServices.h  
+building for Win use User32.lib | include Windows.h  
 
 ####Status
-2013-07-16: only the Linux and Mac part with following functions
+2013-07-16: Linux, Mac and Win part with following functions
 ```cpp
 mouseMoveTo  
 mouseMoveRelative  
