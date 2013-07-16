@@ -33,26 +33,25 @@ int main()
 
     XInputSimulator &sim = XInputSimulator::getInstance();
     waitABit();
-    waitABit();
     sim.mouseMoveTo(500,400);
-//    waitABit();
-//    sim.mouseMoveRelative(400, -100);
-//    waitABit();
-//    sim.mouseDown(1);
-//    waitABit();
-//    sim.mouseMoveRelative(0, 300);
-//    waitABit();
-//    sim.mouseUp(1);
-//    waitABit();
-//    //scroll down and up
-//    sim.mouseScrollY(10);
-//    waitABit();
-//    sim.mouseScrollY(-10);
-//    //scroll left and right
-//    waitABit();
-//    sim.mouseScrollX(10);
-//    waitABit();
-//    sim.mouseScrollX(-10);
+    waitABit();
+    sim.mouseMoveRelative(400, -100);
+    waitABit();
+    sim.mouseDown(1);
+    waitABit();
+    sim.mouseMoveRelative(0, 300);
+    waitABit();
+    sim.mouseUp(1);
+    waitABit();
+    //scroll down and up
+    sim.mouseScrollY(10);
+    waitABit();
+    sim.mouseScrollY(-10);
+    //scroll left and right
+    waitABit();
+    sim.mouseScrollX(10);
+    waitABit();
+    sim.mouseScrollX(-10);
 
 
     waitABit();

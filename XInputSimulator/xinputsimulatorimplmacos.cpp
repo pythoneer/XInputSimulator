@@ -91,8 +91,6 @@ void XInputSimulatorImplMacOs::mouseMoveRelative(int x, int y)
 //TODO use the button from parameter list
 void XInputSimulatorImplMacOs::mouseDown(int button)
 {
-    //throw NotImplementedException();
-
     CGEventRef mouseEv = CGEventCreateMouseEvent(
                 NULL, kCGEventLeftMouseDown,
                 CGPointMake(this->currentX, this->currentY),
@@ -107,8 +105,6 @@ void XInputSimulatorImplMacOs::mouseDown(int button)
 //TODO use the button from parameter list
 void XInputSimulatorImplMacOs::mouseUp(int button)
 {
-    //throw NotImplementedException();
-
     CGEventRef mouseEv = CGEventCreateMouseEvent(
                 NULL, kCGEventLeftMouseUp,
                 CGPointMake(this->currentX, this->currentY),
@@ -128,8 +124,6 @@ void XInputSimulatorImplMacOs::mouseClick(int button)
 //kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
 void XInputSimulatorImplMacOs::mouseScrollX(int length)
 {
-    //throw NotImplementedException();
-
     int scrollDirection = -1; // 1 left -1 right
 
     if(length < 0){
@@ -158,8 +152,6 @@ void XInputSimulatorImplMacOs::mouseScrollX(int length)
 
 void XInputSimulatorImplMacOs::mouseScrollY(int length)
 {
-    //throw NotImplementedException();
-
     int scrollDirection = -1; // 1 down -1 up
 
     if(length < 0){

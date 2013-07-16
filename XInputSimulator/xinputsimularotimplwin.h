@@ -25,6 +25,10 @@
 class XInputSimularotImplWin: public XInputSimulatorImpl
 {
 private:
+    int currentX;
+    int currentY;
+
+    void initCurrentMousePosition();
 
 public:
     XInputSimularotImplWin();

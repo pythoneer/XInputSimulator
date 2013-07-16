@@ -22,35 +22,68 @@
 #include "notimplementedexception.h"
 #include <iostream>
 
+#include <Windows.h>
+
+#define MOUSEEVENTF_HWHEEL 0x01000
+
 XInputSimularotImplWin::XInputSimularotImplWin()
 {
+    this->initCurrentMousePosition();
+}
+
+void XInputSimularotImplWin::initCurrentMousePosition()
+{
+    POINT p;
+    if (GetCursorPos(&p))
+    {
+        this->currentX = p.x;
+        this->currentY = p.y;
+    }
 }
 
 
 void XInputSimularotImplWin::mouseMoveTo(int x, int y)
 {
-    std::cout << "move the mouse!\n";
+    SetCursorPos(x, y);
+
+    this->currentX = x;
+    this->currentY = y;
 }
 
 void XInputSimularotImplWin::mouseMoveRelative(int x, int y)
 {
-    throw NotImplementedException();
+    int newX = this->currentX + x;
+    int newY = this->currentY + y;
+
+    SetCursorPos(newX, newY);
+
+    this->currentX = newX;
+    this->currentY = newY;
 }
 
+//TODO use the button from parameter list
 void XInputSimularotImplWin::mouseDown(int button)
 {
-    throw NotImplementedException();
+    INPUT in={0};
+    in.type = INPUT_MOUSE;
+    in.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+    SendInput(1,&in,sizeof(INPUT));
+    ZeroMemory(&in,sizeof(INPUT));
 }
 
+//TODO use the button from parameter list
 void XInputSimularotImplWin::mouseUp(int button)
 {
-    throw NotImplementedException();
-
+    INPUT in={0};
+    in.type = INPUT_MOUSE;
+    in.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+    SendInput(1,&in,sizeof(INPUT));
+    ZeroMemory(&in,sizeof(INPUT));
 }
 
+//TODO use the button from parameter list
 void XInputSimularotImplWin::mouseClick(int button)
 {
-    throw NotImplementedException();
     this->mouseDown(button);
     //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     this->mouseUp(button);
@@ -58,12 +91,48 @@ void XInputSimularotImplWin::mouseClick(int button)
 //kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
 void XInputSimularotImplWin::mouseScrollX(int length)
 {
-    throw NotImplementedException();
+    int scrollDirection = 1 * 50; // 1 left -1 right
+
+    if(length < 0){
+        length *= -1;
+        scrollDirection *= -1;
+    }
+
+    for(int cnt = 0; cnt < length; cnt++)
+    {
+        INPUT in;
+        in.type = INPUT_MOUSE;
+        in.mi.dx = 0;
+        in.mi.dy = 0;
+        in.mi.dwFlags = MOUSEEVENTF_HWHEEL;
+        in.mi.time = 0;
+        in.mi.dwExtraInfo = 0;
+        in.mi.mouseData = scrollDirection;// WHEEL_DELTA;
+        SendInput(1,&in,sizeof(in));
+    }
 }
 
 void XInputSimularotImplWin::mouseScrollY(int length)
 {
-    throw NotImplementedException();
+    int scrollDirection = -1 * 50; // 1 up -1 down
+
+    if(length < 0){
+        length *= -1;
+        scrollDirection *= -1;
+    }
+
+    for(int cnt = 0; cnt < length; cnt++)
+    {
+        INPUT in;
+        in.type = INPUT_MOUSE;
+        in.mi.dx = 0;
+        in.mi.dy = 0;
+        in.mi.dwFlags = MOUSEEVENTF_WHEEL;
+        in.mi.time = 0;
+        in.mi.dwExtraInfo = 0;
+        in.mi.mouseData = scrollDirection;// WHEEL_DELTA;
+        SendInput(1,&in,sizeof(in));
+    }
 }
 
 void XInputSimularotImplWin::keyDown(int key)
