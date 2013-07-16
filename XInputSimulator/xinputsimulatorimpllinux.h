@@ -22,6 +22,8 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
+#include <X11/keysym.h>
+#include <X11/extensions/XTest.h>
 
 #include "xinputsimulatorimpl.h"
 
@@ -50,7 +52,7 @@ public:
     virtual void keyUp(int key) override;
     virtual void keyClick(int key) override;
 
-    virtual void charToKeyCode(char key_char) override;
+    virtual int charToKeyCode(char key_char) override;
     virtual void keySequence(const std::string &sequence) override;
 
 };

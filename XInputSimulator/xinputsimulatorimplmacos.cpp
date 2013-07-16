@@ -192,7 +192,7 @@ void XInputSimulatorImplMacOs::keyClick(int key)
     throw NotImplementedException();
 }
 
-void XInputSimulatorImplMacOs::charToKeyCode(char key_char)
+int XInputSimulatorImplMacOs::charToKeyCode(char key_char)
 {
     throw NotImplementedException();
 }

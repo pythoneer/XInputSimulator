@@ -50,8 +50,18 @@ int main()
     waitABit();
     sim.mouseScrollX(-10);
 
+//    char anA = 'a';
+//    cout << "a: " << (int)anA << " " << sim.charToKeyCode(anA) << endl;
+//    std::cout << std::endl;
+//    waitABit();
+//    sim.keyClick(sim.charToKeyCode(anA));
+//    std::cout << std::endl;
+//    waitABit();
+//    sim.keySequence(" Simple sentence Here 123 ");
 
-    waitABit();
+
+
+    //waitABit();
     return 0;
 }
 

@@ -46,7 +46,7 @@ public:
     virtual void keyUp(int key) override;
     virtual void keyClick(int key) override;
 
-    virtual void charToKeyCode(char key_char) override;
+    virtual int charToKeyCode(char key_char) override;
     virtual void keySequence(const std::string &sequence) override;
 };
 

@@ -149,7 +149,7 @@ void XInputSimulatorImplWin::keyClick(int key)
     throw NotImplementedException();
 }
 
-void XInputSimulatorImplWin::charToKeyCode(char key_char)
+int XInputSimulatorImplWin::charToKeyCode(char key_char)
 {
     throw NotImplementedException();
 }

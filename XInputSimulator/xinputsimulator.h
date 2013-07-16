@@ -72,7 +72,7 @@ public:
     void keyUp(int key);
     void keyClick(int key);
 
-    void charToKeyCode(char key_char);
+    int charToKeyCode(char key_char);
     void keySequence(const std::string &sequence);
 
     // mouse

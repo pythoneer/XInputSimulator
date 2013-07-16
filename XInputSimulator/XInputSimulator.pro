@@ -26,7 +26,7 @@ macx {
 }
 unix:!macx{
 # linux only
-    LIBS += -lX11
+    LIBS += -lX11 -lXtst
 }
 win32 {
 # windows only

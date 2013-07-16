@@ -39,7 +39,7 @@ public:
     virtual void keyUp(int key) = 0;
     virtual void keyClick(int key) = 0;
 
-    virtual void charToKeyCode(char key_char) = 0;
+    virtual int charToKeyCode(char key_char) = 0;
     virtual void keySequence(const std::string &sequence) = 0;
 
 };

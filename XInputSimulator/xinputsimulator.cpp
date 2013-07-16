@@ -75,9 +75,9 @@ void XInputSimulator::keyClick(int key)
     implementation->keyClick(key);
 }
 
-void XInputSimulator::charToKeyCode(char key_char)
+int XInputSimulator::charToKeyCode(char key_char)
 {
-    implementation->charToKeyCode(key_char);
+    return implementation->charToKeyCode(key_char);
 }
 
 void XInputSimulator::keySequence(const std::string &sequence)

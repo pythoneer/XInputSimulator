@@ -141,26 +141,63 @@ void XInputSimulatorImplLinux::mouseScrollY(int length)
 
 void XInputSimulatorImplLinux::keyDown(int key)
 {
-    throw NotImplementedException();
+    //throw NotImplementedException();
+    XTestFakeKeyEvent(display, key, True, 0);
+    XFlush(display);
 }
 
 void XInputSimulatorImplLinux::keyUp(int key)
 {
-    throw NotImplementedException();
+    //throw NotImplementedException();
+    XTestFakeKeyEvent(display, key, False, 0);
+    XFlush(display);
 }
 
 void XInputSimulatorImplLinux::keyClick(int key)
 {
-    throw NotImplementedException();
+    std::cout << "key click: " << key << std::endl;
+    //throw NotImplementedException();
+    this->keyDown(key);
+    this->keyUp(key);
 }
 
-void XInputSimulatorImplLinux::charToKeyCode(char key_char)
+int XInputSimulatorImplLinux::charToKeyCode(char key_char)
 {
-    throw NotImplementedException();
+    std::cout << "cchar: " << (int)key_char << std::endl;
+
+    //throw NotImplementedException();
+
+//    KeySym sym = XStringToKeysym(&key_char);
+
+//    std::cout << "sym: " << sym << std::endl;
+
+    int keyCode = XKeysymToKeycode(display, key_char);
+    std::cout << "ccode: " << keyCode << std::endl;
+
+    return keyCode;
 }
 void XInputSimulatorImplLinux::keySequence(const std::string &sequence)
 {
-    throw NotImplementedException();
+    //throw NotImplementedException();
+
+    std::cout << "key seq: " << sequence << std::endl;
+
+    //c++11 training
+//    for(auto it = sequence.begin(); it != sequence.end(); ++it) {
+//        std::cout << "key org: " << (int)(*it) << std::endl;
+//        int keyCode = this->charToKeyCode(*it);
+//        std::cout << "key code: " << keyCode << std::endl;
+//        this->keyClick(keyCode);
+//    }
+    //c++11 better
+    for(const char c : sequence) {
+        std::cout << "cahr: " << c << std::endl;
+        int keyCode = this->charToKeyCode(c);
+        std::cout << "key code: " << keyCode << std::endl;
+        this->keyClick(keyCode);
+        std::cout << std::endl;
+    }
+
 }
 
 
