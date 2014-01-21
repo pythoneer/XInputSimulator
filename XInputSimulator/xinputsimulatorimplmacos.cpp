@@ -29,15 +29,21 @@
 #include "xinputsimulatorimplmacos.h"
 #include "notimplementedexception.h"
 
+#include <QDebug>
 
 
 XInputSimulatorImplMacOs::XInputSimulatorImplMacOs()
 {
     //TODO
     //this->initCurrentMousePosition();
-
+    std::cout << "constructor " << std::endl;
     this->currentX = 500;
     this->currentY = 500;
+
+    CGDirectDisplayID displayID = CGMainDisplayID();
+
+    this->displayX = CGDisplayPixelsWide(displayID);
+    this->displayY = CGDisplayPixelsHigh(displayID);
 }
 
 //void XInputSimulatorImplMacOs::initMouseEvent(int button)
@@ -52,6 +58,8 @@ void XInputSimulatorImplMacOs::initCurrentMousePosition()
 
 void XInputSimulatorImplMacOs::mouseMoveTo(int x, int y)
 {
+
+    //TODO screen check see moveRelative
 
     CGEventRef mouseEv = CGEventCreateMouseEvent(
                 NULL, kCGEventMouseMoved,
@@ -72,6 +80,12 @@ void XInputSimulatorImplMacOs::mouseMoveRelative(int x, int y)
 {
     int newX = this->currentX + x;
     int newY = this->currentY + y;
+
+    if(newX < 0 || newX > this->displayX || newY < 0 || newY > this->displayY )
+    {
+        std::cout << "mouse moved beyound screensize." << endl;
+        return;
+    }
 
     std::cout << "newx: " << newX << " newy: " << newY << std::endl;
 

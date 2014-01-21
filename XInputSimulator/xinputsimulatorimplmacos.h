@@ -29,6 +29,9 @@ private:
     int currentX;
     int currentY;
 
+    size_t displayX;
+    size_t displayY;
+
     void initCurrentMousePosition();
 
 public:

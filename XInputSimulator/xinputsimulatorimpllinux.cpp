@@ -17,6 +17,8 @@
 
 #ifdef __linux__
 
+#include <unistd.h> //usleep
+
 #include "xinputsimulatorimpllinux.h"
 #include "notimplementedexception.h"
 #include <iostream>
@@ -24,6 +26,8 @@
 //memset
 #include <stdio.h>
 #include <cstring>
+
+
 
 XInputSimulatorImplLinux::XInputSimulatorImplLinux()
 {
@@ -33,6 +37,13 @@ XInputSimulatorImplLinux::XInputSimulatorImplLinux()
     }
 
     root = DefaultRootWindow(display);
+
+    Screen* pscr = DefaultScreenOfDisplay( display );
+
+    this->displayX = pscr->width;
+    this->displayY = pscr->height;
+
+    //XCloseDisplay( pdsp );
 }
 
 void XInputSimulatorImplLinux::initMouseEvent(int button)
@@ -77,27 +88,20 @@ void XInputSimulatorImplLinux::mouseMoveRelative(int x, int y)
 
 void XInputSimulatorImplLinux::mouseDown(int button)
 {
-    this->initMouseEvent(button);
-
-    event.type = ButtonPress;
-    if (XSendEvent(display, PointerWindow, True, ButtonPressMask, &event) == 0)
-        std::cout << "Error to send the event!\n";
+    XTestFakeButtonEvent(display, button, true, CurrentTime);
     XFlush(display);
 }
 
 void XInputSimulatorImplLinux::mouseUp(int button)
 {
-    this->initMouseEvent(button);
-
-    event.type = ButtonRelease;
-    if (XSendEvent(display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
-       std::cout <<  "Error to send the event!\n";
+    XTestFakeButtonEvent(display, button, false, CurrentTime);
     XFlush(display);
 }
 
 void XInputSimulatorImplLinux::mouseClick(int button)
 {
     this->mouseDown(button);
+    usleep(100);
     this->mouseUp(button);
 }
 //kajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjfkajsdölfkjasdölfkjasldökfjaölsdkjfalsdkjfalskdjfaldskjf
@@ -141,14 +145,12 @@ void XInputSimulatorImplLinux::mouseScrollY(int length)
 
 void XInputSimulatorImplLinux::keyDown(int key)
 {
-    //throw NotImplementedException();
     XTestFakeKeyEvent(display, key, True, 0);
     XFlush(display);
 }
 
 void XInputSimulatorImplLinux::keyUp(int key)
 {
-    //throw NotImplementedException();
     XTestFakeKeyEvent(display, key, False, 0);
     XFlush(display);
 }
@@ -156,7 +158,7 @@ void XInputSimulatorImplLinux::keyUp(int key)
 void XInputSimulatorImplLinux::keyClick(int key)
 {
     std::cout << "key click: " << key << std::endl;
-    //throw NotImplementedException();
+
     this->keyDown(key);
     this->keyUp(key);
 }
@@ -165,12 +167,6 @@ int XInputSimulatorImplLinux::charToKeyCode(char key_char)
 {
     std::cout << "cchar: " << (int)key_char << std::endl;
 
-    //throw NotImplementedException();
-
-//    KeySym sym = XStringToKeysym(&key_char);
-
-//    std::cout << "sym: " << sym << std::endl;
-
     int keyCode = XKeysymToKeycode(display, key_char);
     std::cout << "ccode: " << keyCode << std::endl;
 
@@ -178,18 +174,8 @@ int XInputSimulatorImplLinux::charToKeyCode(char key_char)
 }
 void XInputSimulatorImplLinux::keySequence(const std::string &sequence)
 {
-    //throw NotImplementedException();
-
     std::cout << "key seq: " << sequence << std::endl;
 
-    //c++11 training
-//    for(auto it = sequence.begin(); it != sequence.end(); ++it) {
-//        std::cout << "key org: " << (int)(*it) << std::endl;
-//        int keyCode = this->charToKeyCode(*it);
-//        std::cout << "key code: " << keyCode << std::endl;
-//        this->keyClick(keyCode);
-//    }
-    //c++11 better
     for(const char c : sequence) {
         std::cout << "cahr: " << c << std::endl;
         int keyCode = this->charToKeyCode(c);

@@ -25,6 +25,8 @@
 #include <X11/keysym.h>
 #include <X11/extensions/XTest.h>
 
+#undef Bool //fix C #define Bool int in C++ Qt moc from x11
+
 #include "xinputsimulatorimpl.h"
 
 class XInputSimulatorImplLinux : public XInputSimulatorImpl
@@ -33,6 +35,9 @@ private:
     Display *display;
     Window root;
     XEvent event;
+
+    size_t displayX;
+    size_t displayY;
 
     void initMouseEvent(int button);
 
