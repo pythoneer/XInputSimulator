@@ -4,6 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 CONFIG += c++11
 
+TARGET = XInputSimulatorMain
+
 SOURCES += main.cpp \
     xinputsimulatorimpl.cpp \
     xinputsimulator.cpp \
