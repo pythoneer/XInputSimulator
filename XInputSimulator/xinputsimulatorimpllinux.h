@@ -43,7 +43,7 @@ private:
 
 public:
     XInputSimulatorImplLinux();
-    ~XInputSimulatorImplLinux(){ delete display; }
+    //~XInputSimulatorImplLinux(){ delete display; }
 
     virtual void mouseMoveTo(int x, int y) override;
     virtual void mouseMoveRelative(int x, int y) override;
