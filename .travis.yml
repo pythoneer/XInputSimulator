@@ -1,7 +1,10 @@
 before_install:
     - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+    - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
     - sudo apt-get update -qq
     - sudo apt-get install -qq qt5-qmake qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libsqlite3-dev libx11-dev libxtst-dev
+    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 script:
     - qmake -qt=qt5 -v
     - qmake -qt=qt5 XInputSimulator/
