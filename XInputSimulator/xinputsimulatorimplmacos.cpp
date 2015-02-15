@@ -20,16 +20,13 @@
 
 #include <iostream>
 
-//quartz CG... stuff
-#include <ApplicationServices/ApplicationServices.h>
-
 //sleep
 #include <unistd.h>
 
 #include "xinputsimulatorimplmacos.h"
 #include "notimplementedexception.h"
 
-#include <QDebug>
+//#include <QDebug>
 
 
 XInputSimulatorImplMacOs::XInputSimulatorImplMacOs()
@@ -83,7 +80,7 @@ void XInputSimulatorImplMacOs::mouseMoveRelative(int x, int y)
 
     if(newX < 0 || newX > this->displayX || newY < 0 || newY > this->displayY )
     {
-        std::cout << "mouse moved beyound screensize." << endl;
+        std::cout << "mouse moved beyound screensize." << std::endl;
         return;
     }
 
@@ -193,26 +190,109 @@ void XInputSimulatorImplMacOs::mouseScrollY(int length)
 
 void XInputSimulatorImplMacOs::keyDown(int key)
 {
-    throw NotImplementedException();
+    CGKeyCode keycode = key;    
+    CGEventRef commandDown = CGEventCreateKeyboardEvent(NULL, keycode, true);
+    CGEventPost(kCGAnnotatedSessionEventTap, commandDown);
+    CFRelease(commandDown);
 }
 
 void XInputSimulatorImplMacOs::keyUp(int key)
 {
-    throw NotImplementedException();
+    CGKeyCode keycode = key;
+    CGEventRef commandUp = CGEventCreateKeyboardEvent(NULL, keycode, false);
+    CGEventPost(kCGAnnotatedSessionEventTap, commandUp);
+    CFRelease(commandUp);
 }
 
 void XInputSimulatorImplMacOs::keyClick(int key)
 {
-    throw NotImplementedException();
+    std::cout << "key click: " << key << std::endl;
+    
+    this->keyDown(key);
+    this->keyUp(key);
+}
+
+CFStringRef XInputSimulatorImplMacOs::createStringForKey(CGKeyCode keyCode)
+{
+    TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
+    //CFDataRef layoutData = TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
+    CFDataRef layoutData = (CFDataRef)TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
+    
+    const UCKeyboardLayout *keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
+    
+    UInt32 keysDown = 0;
+    UniChar chars[4];
+    UniCharCount realLength;
+    
+    UCKeyTranslate(keyboardLayout,
+                   keyCode,
+                   kUCKeyActionDisplay,
+                   0,
+                   LMGetKbdType(),
+                   kUCKeyTranslateNoDeadKeysBit,
+                   &keysDown,
+                   sizeof(chars) / sizeof(chars[0]),
+                   &realLength,
+                   chars);
+    
+    CFRelease(currentKeyboard);
+    
+    return CFStringCreateWithCharacters(kCFAllocatorDefault, chars, 1);
+    
+    return NULL;
 }
 
 int XInputSimulatorImplMacOs::charToKeyCode(char key_char)
 {
-    throw NotImplementedException();
+    static CFMutableDictionaryRef charToCodeDict = NULL;
+    CGKeyCode code;
+    UniChar character = key_char;
+    CFStringRef charStr = NULL;
+    
+    /* Generate table of keycodes and characters. */
+    if (charToCodeDict == NULL) {
+        size_t i;
+        charToCodeDict = CFDictionaryCreateMutable(kCFAllocatorDefault,
+                                                   128,
+                                                   &kCFCopyStringDictionaryKeyCallBacks,
+                                                   NULL);
+        if (charToCodeDict == NULL) return UINT16_MAX;
+        
+        /* Loop through every keycode (0 - 127) to find its current mapping. */
+        for (i = 0; i < 128; ++i) {
+            CFStringRef string = createStringForKey((CGKeyCode)i);
+            if (string != NULL) {
+                CFDictionaryAddValue(charToCodeDict, string, (const void *)i);
+                CFRelease(string);
+            }
+        }
+    }
+    
+    charStr = CFStringCreateWithCharacters(kCFAllocatorDefault, &character, 1);
+    
+    /* Our values may be NULL (0), so we need to use this function. */
+    if (!CFDictionaryGetValueIfPresent(charToCodeDict,
+                                       charStr,
+                                       (const void **)&code)) {
+        code = UINT16_MAX;
+    }
+    
+    CFRelease(charStr);
+    return code;
 }
 void XInputSimulatorImplMacOs::keySequence(const std::string &sequence)
 {
-    throw NotImplementedException();
+    std::cout << "key seq: " << sequence << std::endl;
+    
+    for(const char c : sequence) {
+        std::cout << "cahr: " << c << std::endl;
+        int keyCode = this->charToKeyCode(c);
+        std::cout << "key code: " << keyCode << std::endl;
+        this->keyClick(keyCode);
+        std::cout << std::endl;
+    }
+
+    //throw NotImplementedException();
 }
 
 #endif //apple

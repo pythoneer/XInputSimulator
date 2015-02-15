@@ -29,35 +29,36 @@ int main()
     cout << "Hello World!" << endl;
 
     XInputSimulator &sim = XInputSimulator::getInstance();
-    waitABit();
-    sim.mouseMoveTo(500,400);
-    waitABit();
-    sim.mouseMoveRelative(400, -100);
-    waitABit();
-    sim.mouseDown(XInputSimulator::LEFT_MOUSE_BUTTON);
-    waitABit();
-    sim.mouseMoveRelative(0, 300);
-    waitABit();
-    sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);
-    waitABit();
-    //scroll down and up
-    sim.mouseScrollY(10);
-    waitABit();
-    sim.mouseScrollY(-10);
-    //scroll left and right
-    waitABit();
-    sim.mouseScrollX(10);
-    waitABit();
-    sim.mouseScrollX(-10);
 
-//    char anA = 'a';
-//    cout << "a: " << (int)anA << " " << sim.charToKeyCode(anA) << endl;
-//    std::cout << std::endl;
+    waitABit();
+//    sim.mouseMoveTo(500,400);
 //    waitABit();
-//    sim.keyClick(sim.charToKeyCode(anA));
-//    std::cout << std::endl;
+//    sim.mouseMoveRelative(400, -100);
 //    waitABit();
-//    sim.keySequence(" Simple sentence Here 123 ");
+//    sim.mouseDown(XIS::LEFT_MOUSE_BUTTON);
+//    waitABit();
+//    sim.mouseMoveRelative(0, 300);
+//    waitABit();
+//    sim.mouseUp(XIS::LEFT_MOUSE_BUTTON);
+//    waitABit();
+//    //scroll down and up
+//    sim.mouseScrollY(10);
+//    waitABit();
+//    sim.mouseScrollY(-10);
+//    //scroll left and right
+//    waitABit();
+//    sim.mouseScrollX(10);
+//    waitABit();
+//    sim.mouseScrollX(-10);
+
+    char anA = 'a';
+    cout << "a: " << (int)anA << " " << sim.charToKeyCode(anA) << endl;
+    std::cout << std::endl;
+    waitABit();
+    sim.keyClick(sim.charToKeyCode(anA));
+    std::cout << std::endl;
+    waitABit();
+    sim.keySequence(" Simple sentence Here 123 ");
 
 
 
@@ -68,5 +69,5 @@ int main()
 void waitABit()
 {
     //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    sleep(2);
+    sleep(1);
 }

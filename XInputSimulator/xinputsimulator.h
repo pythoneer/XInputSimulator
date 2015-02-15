@@ -81,5 +81,6 @@ public:
     static const int MIDDLE_MOUSE_BUTTON = 3;
 };
 
+typedef XInputSimulator XIS;
 
 #endif // XINPUTSIMULATOR_H
