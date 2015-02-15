@@ -22,7 +22,7 @@ building for Linux use -lX11 -lXtst | include X11/Xlib.h X11/Xutil.h
 building for Mac use -framework ApplicationServices | include ApplicationServices/ApplicationServices.h  
 building for Win use User32.lib | include Windows.h  
 
-if you wanna use qmake i provided a XInputSimulator.pro file – simply type:  
+if you wanna use qmake i provide a XInputSimulator.pro file – simply type:  
 ```
 >$ qmake XInputSimulator.pro && make
 ```
