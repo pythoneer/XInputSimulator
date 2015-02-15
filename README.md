@@ -2,6 +2,8 @@ XInputSimulator
 ===============
 
 Cross (X) Plattform (Linux/Mac/Win) Simulator for input devices to simulate mouse moves/clicks/scrolls or keyboard keystrokes.  
+
+[![Build Status](https://travis-ci.org/pythoneer/XInputSimulator.svg?branch=master)](https://travis-ci.org/pythoneer/XInputSimulator)
   
 This program is published under the terms of the LGPL (http://www.gnu.org/licenses/)
 ####How to use
@@ -16,12 +18,24 @@ For a detailed example see main.cpp
   sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);    //release the mousebutton press
 ```
   
-building for Linux use -lX11 | include X11/Xlib.h X11/Xutil.h  
+building for Linux use -lX11 -lXtst | include X11/Xlib.h X11/Xutil.h  
 building for Mac use -framework ApplicationServices | include ApplicationServices/ApplicationServices.h  
 building for Win use User32.lib | include Windows.h  
 
-if you wanna use qmake i provided a XInputSimulator.pro file – simply type:  
+if you wanna use qmake i provide a XInputSimulator.pro file – simply type:  
+```
 >$ qmake XInputSimulator.pro && make
+```
+
+for cmake there is a CMakeLists.txt file -simply type:
+```
+>$ mkdir build
+>$ cd build
+>$ cmake ../XInputSimulator/
+>$ make
+```
+
+for xcode there is an xcode project file
 
 ####Status early Alpha
 2013-07-16: Linux, Mac and Win part with following functions
