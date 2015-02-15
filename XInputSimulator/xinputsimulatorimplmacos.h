@@ -21,6 +21,10 @@
 #ifndef XINPUTSIMULATORIMPLMACOS_H
 #define XINPUTSIMULATORIMPLMACOS_H
 
+#include <CoreFoundation/CoreFoundation.h>
+#include <CoreGraphics/CoreGraphics.h>
+#include <Carbon/Carbon.h> /* For kVK_ constants, and TIS functions. */
+
 #include "xinputsimulatorimpl.h"
 
 class XInputSimulatorImplMacOs : public XInputSimulatorImpl
@@ -33,6 +37,7 @@ private:
     size_t displayY;
 
     void initCurrentMousePosition();
+    CFStringRef createStringForKey(CGKeyCode keyCode);
 
 public:
     XInputSimulatorImplMacOs();
