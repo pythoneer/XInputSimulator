@@ -31,25 +31,25 @@ int main()
     XInputSimulator &sim = XInputSimulator::getInstance();
 
     waitABit();
-//    sim.mouseMoveTo(500,400);
-//    waitABit();
-//    sim.mouseMoveRelative(400, -100);
-//    waitABit();
-//    sim.mouseDown(XIS::LEFT_MOUSE_BUTTON);
-//    waitABit();
-//    sim.mouseMoveRelative(0, 300);
-//    waitABit();
-//    sim.mouseUp(XIS::LEFT_MOUSE_BUTTON);
-//    waitABit();
-//    //scroll down and up
-//    sim.mouseScrollY(10);
-//    waitABit();
-//    sim.mouseScrollY(-10);
-//    //scroll left and right
-//    waitABit();
-//    sim.mouseScrollX(10);
-//    waitABit();
-//    sim.mouseScrollX(-10);
+    sim.mouseMoveTo(500,400);
+    waitABit();
+    sim.mouseMoveRelative(400, -100);
+    waitABit();
+    sim.mouseDown(XIS::LEFT_MOUSE_BUTTON);
+    waitABit();
+    sim.mouseMoveRelative(0, 300);
+    waitABit();
+    sim.mouseUp(XIS::LEFT_MOUSE_BUTTON);
+    waitABit();
+    //scroll down and up
+    sim.mouseScrollY(10);
+    waitABit();
+    sim.mouseScrollY(-10);
+    //scroll left and right
+    waitABit();
+    sim.mouseScrollX(10);
+    waitABit();
+    sim.mouseScrollX(-10);
 
     char anA = 'a';
     cout << "a: " << (int)anA << " " << sim.charToKeyCode(anA) << endl;
