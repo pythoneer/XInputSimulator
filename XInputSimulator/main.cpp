@@ -18,7 +18,16 @@
 #include <iostream>
 #include "xinputsimulator.h"
 
+#ifdef __linux__
+//sleep
 #include <unistd.h>
+#elif __APPLE__
+//sleep
+#include <unistd.h>
+#elif _WIN32
+//sleep
+#include <windows.h>
+#endif
 
 using namespace std;
 
@@ -51,7 +60,8 @@ int main()
     waitABit();
     sim.mouseScrollX(-10);
 
-    char anA = 'a';
+#ifdef __linux__ || __APPLE__
+	char anA = 'a';
     cout << "a: " << (int)anA << " " << sim.charToKeyCode(anA) << endl;
     std::cout << std::endl;
     waitABit();
@@ -59,15 +69,24 @@ int main()
     std::cout << std::endl;
     waitABit();
     sim.keySequence(" Simple sentence Here 123 ");
+#elif _WIN32
+	//not implemented
+#endif
 
 
-
-    //waitABit();
+    waitABit();
     return 0;
 }
 
 void waitABit()
 {
     //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    sleep(1);
+#ifdef __linux__
+	sleep(1);
+#elif __APPLE__
+	sleep(1);
+#elif _WIN32
+	Sleep(1000);
+#endif
+    
 }

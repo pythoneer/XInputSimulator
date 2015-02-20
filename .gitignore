@@ -16,5 +16,5 @@
 #*.pro 
 *.user
 *.directory
-build-*
-*build-*
+build*
+*build*
