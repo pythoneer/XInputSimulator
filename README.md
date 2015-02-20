@@ -18,21 +18,16 @@ For a detailed example see main.cpp
   sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);    //release the mousebutton press
 ```
   
-building for Linux use -lX11 -lXtst | include X11/Xlib.h X11/Xutil.h  
-building for Mac use -framework ApplicationServices | include ApplicationServices/ApplicationServices.h  
-building for Win use User32.lib | include Windows.h  
+building for Linux use -lX11 -lXtst 
+building for Mac use -framework ApplicationServices Carbon CoreFoundation
+building for Win use User32.lib
 
-if you wanna use qmake i provide a XInputSimulator.pro file – simply type:  
-```
->$ qmake XInputSimulator.pro && make
-```
-
-for cmake there is a CMakeLists.txt file -simply type:
+for cmake there is a CMakeLists.txt file -simply type (for all platforms):
 ```
 >$ mkdir build
 >$ cd build
 >$ cmake ../XInputSimulator/
->$ make
+>$ cmake --build .
 ```
 
 for xcode there is an xcode project file
