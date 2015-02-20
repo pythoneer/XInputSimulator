@@ -18,9 +18,9 @@ For a detailed example see main.cpp
   sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);    //release the mousebutton press
 ```
   
-building for Linux use -lX11 -lXtst 
-building for Mac use -framework ApplicationServices Carbon CoreFoundation
-building for Win use User32.lib
+building for Linux use -lX11 -lXtst  
+building for Mac use -framework ApplicationServices Carbon CoreFoundation  
+building for Win use User32.lib  
 
 for cmake there is a CMakeLists.txt file -simply type (for all platforms):
 ```
