@@ -60,7 +60,7 @@ int main()
     waitABit();
     sim.mouseScrollX(-10);
 
-#ifdef __linux__ || __APPLE__
+#if defined(__linux__) || defined(__APPLE__)
 	char anA = 'a';
     cout << "a: " << (int)anA << " " << sim.charToKeyCode(anA) << endl;
     std::cout << std::endl;
