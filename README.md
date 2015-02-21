@@ -18,9 +18,9 @@ For a detailed example see main.cpp
   sim.mouseUp(XInputSimulator::LEFT_MOUSE_BUTTON);    //release the mousebutton press
 ```
   
-building for Linux use -lX11 -lXtst 
-building for Mac use -framework ApplicationServices Carbon CoreFoundation
-building for Win use User32.lib
+building for Linux use -lX11 -lXtst  
+building for Mac use -framework ApplicationServices Carbon CoreFoundation  
+building for Win use User32.lib  
 
 for cmake there is a CMakeLists.txt file -simply type (for all platforms):
 ```
@@ -30,7 +30,12 @@ for cmake there is a CMakeLists.txt file -simply type (for all platforms):
 >$ cmake --build .
 ```
 
-for xcode there is an xcode project file
+for xcode you can generate a project by
+```
+>$ mkdir build
+>$ cd build
+>$ cmake -G Xcode ../XInputSimulator/
+```
 
 ####Status early Alpha
 2013-07-16: Linux, Mac and Win part with following functions
