@@ -18,8 +18,8 @@
 
 #ifdef _WIN32
 
+#include "xinputsimulator.h"
 #include "xinputsimulatorimplwin.h"
-#include "notimplementedexception.h"
 #include <iostream>
 
 #include <Windows.h>

@@ -18,7 +18,6 @@ HEADERS += \
     xinputsimulator.h \
     xinputsimulatorimpl.h \
     xinputsimulatorimpllinux.h \
-    notimplementedexception.h \
     xinputsimulatorimplmacos.h \
     xinputsimulatorimplwin.h
 
