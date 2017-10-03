@@ -20,21 +20,12 @@
 
 #include <memory>
 #include <iostream>
-#include "xinputsimulatorimpl.h"
-#include "notimplementedexception.h"
-
-#ifdef __linux__
-#include "xinputsimulatorimpllinux.h"
-#elif __APPLE__
-#include "xinputsimulatorimplmacos.h"
-#elif _WIN32
-#include "xinputsimulatorimplwin.h"
-#endif
+#include <stdexcept>
 
 class XInputSimulator
 {
 private:
-    XInputSimulatorImpl *implementation;
+    class XInputSimulatorImpl *implementation;
 
     XInputSimulator(){}
 
@@ -42,23 +33,9 @@ public:
     XInputSimulator(XInputSimulator&) = delete;
     void operator=(XInputSimulator&) = delete;
 
-    ~XInputSimulator() {
-        delete implementation;
-    }
+    ~XInputSimulator();
 
-    static XInputSimulator & getInstance()
-    {
-        static XInputSimulator instance;
-
-#ifdef __linux__
-        instance.implementation = new XInputSimulatorImplLinux;
-#elif __APPLE__
-        instance.implementation = new XInputSimulatorImplMacOs;
-#elif _WIN32
-        instance.implementation = new XInputSimulatorImplWin;
-#endif
-        return instance;
-    }
+    static XInputSimulator & getInstance();
 
     void mouseMoveTo(int x, int y);
     void mouseMoveRelative(int x, int y);
@@ -82,5 +59,13 @@ public:
 };
 
 typedef XInputSimulator XIS;
+
+
+class NotImplementedException : public std::runtime_error
+{
+public:
+    NotImplementedException();
+};
+
 
 #endif // XINPUTSIMULATOR_H

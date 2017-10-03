@@ -17,6 +17,32 @@
 
 #include "xinputsimulator.h"
 
+#ifdef __linux__
+#include "xinputsimulatorimpllinux.h"
+#elif __APPLE__
+#include "xinputsimulatorimplmacos.h"
+#elif _WIN32
+#include "xinputsimulatorimplwin.h"
+#endif
+
+XInputSimulator & XInputSimulator::getInstance()
+{
+    static XInputSimulator instance;
+
+#ifdef __linux__
+    instance.implementation = new XInputSimulatorImplLinux;
+#elif __APPLE__
+    instance.implementation = new XInputSimulatorImplMacOs;
+#elif _WIN32
+    instance.implementation = new XInputSimulatorImplWin;
+#endif
+    return instance;
+}
+
+XInputSimulator::~XInputSimulator() {
+    delete implementation;
+}
+
 
 //*************************************************//
 //******************M O U S E**********************//
